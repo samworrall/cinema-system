@@ -1,0 +1,6 @@
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/booking_parser.rb'
