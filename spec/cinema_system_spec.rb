@@ -4,9 +4,7 @@ require 'cinema_system'
 
 RSpec.describe CinemaSystem do
   let(:subject) { CinemaSystem.new }
-  let(:booking_request) {
-    { id: 0, first_seat_row: 1, first_seat: 0, last_seat_row: 1, last_seat: 2 }
-  }
+  let(:booking_request) { { id: 0, first_seat_row: 1, first_seat: 0, last_seat_row: 1, last_seat: 2 } }
 
   describe '#theatre' do
     it 'returns an array of arrays representing the 100 rows of 50 seats' do
