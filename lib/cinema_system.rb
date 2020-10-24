@@ -8,7 +8,11 @@ class CinemaSystem
 
   attr_accessor :theatre
 
-  def update_theatre(row:, first_seat:, last_seat:)
+  def update_theatre(booking_request)
+    row = booking_request[:first_seat_row]
+    first_seat = booking_request[:first_seat]
+    last_seat = booking_request[:last_seat]
+
     (first_seat..last_seat).each do |seat|
       theatre[row][seat] = 'X'
     end
