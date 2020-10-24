@@ -8,7 +8,7 @@ RSpec.describe ProcessBookingRequests do
 
   describe '#call' do
     it 'returns a list of rejected bookings' do
-      expect(subject.call(bookings_file_path).length).to eq(10)
+      expect(subject.call(bookings_file_path).length).to eq(9)
     end
   end
 end
