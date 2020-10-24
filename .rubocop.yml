@@ -7,3 +7,5 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Max: 50
+  Exclude:
+    - 'spec/booking_validator_spec.rb'

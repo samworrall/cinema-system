@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+END_OF_ROW = 49
+
 # BookingValidator responsible for assessing the valididty of the booking request.
 class BookingValidator
   def self.valid_booking?(booking, theatre)
@@ -14,15 +16,16 @@ class BookingValidator
   end
 
   def self.no_more_than_5_seats?(booking)
-    (booking[:last_seat] - booking[:first_seat]) <= 5
+    (booking[:last_seat] - booking[:first_seat]) < 5
   end
 
   def self.all_seats_available?(booking, theatre)
     row = booking[:first_seat_row]
     first_seat = booking[:first_seat]
-    num_of_seats = booking[:last_seat] - booking[:first_seat]
+    num_of_seats = (booking[:last_seat] - booking[:first_seat]) + 1
 
     seats = theatre[row].slice(first_seat, num_of_seats)
+
     seats.none?('X')
   end
 
@@ -51,10 +54,10 @@ class BookingValidator
     row = booking[:first_seat_row]
     last_seat = booking[:last_seat]
 
-    return false if last_seat == 49
+    return false if last_seat == END_OF_ROW
 
-    if last_seat == 48
-      return false unless theatre[row][49].nil?
+    if last_seat == (END_OF_ROW - 1)
+      return false unless theatre[row][END_OF_ROW].nil?
     elsif theatre[row][last_seat + 1] == 'X'
       return false
     elsif theatre[row][last_seat + 2].nil?

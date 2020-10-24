@@ -36,8 +36,27 @@ RSpec.describe BookingValidator do
     end
 
     context 'when accepting the booking would leave a single seat gap' do
-      context 'when leaving a gap on the left' do
+      context 'when leaving a gap on the left and first seat is index 1' do
         let(:booking) { { id: 3, first_seat_row: 2, first_seat: 1, last_seat_row: 2, last_seat: 3 } }
+
+        it 'returns false' do
+          expect(subject.valid_booking?(booking, theatre)).to eq(false)
+        end
+      end
+
+      context 'when the first seat is on the first in the row' do
+        let(:booking) { { id: 3, first_seat_row: 2, first_seat: 0, last_seat_row: 2, last_seat: 3 } }
+
+        it 'returns true' do
+          expect(subject.valid_booking?(booking, theatre)).to eq(true)
+        end
+      end
+
+      context 'when the first seat is in the middle' do
+        before do
+          theatre[2][38] = 'X'
+        end
+        let(:booking) { { id: 3, first_seat_row: 2, first_seat: 40, last_seat_row: 2, last_seat: 41 } }
 
         it 'returns false' do
           expect(subject.valid_booking?(booking, theatre)).to eq(false)
