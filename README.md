@@ -27,7 +27,7 @@ linting purposes. I would say that the bulk of the code was completed in around 
 afterwards trying to work out why I was only getting back 9 invalid bookings rather than 10 (the number which the tech test brief
 stated I should get back). After checking through the edge cases again and again, I've decided that there's a strong possibility
 that the given number 10 was wrong, or the sample data was changed before being given to me. I will note that both data files had
-trailing commas when the bried explicitly mentioned that they didn't.
+trailing commas when the brief explicitly mentioned that they didn't.
 
 ## Room to improve
 
