@@ -16,13 +16,14 @@ class BookingValidator
   end
 
   def self.no_more_than_5_seats?(booking)
-    (booking[:last_seat] - booking[:first_seat]) < 5
+    num_of_seats = (booking[:first_seat]..booking[:last_seat]).to_a.count
+    num_of_seats <= 5
   end
 
   def self.all_seats_available?(booking, theatre)
     row = booking[:first_seat_row]
     first_seat = booking[:first_seat]
-    num_of_seats = (booking[:last_seat] - booking[:first_seat]) + 1
+    num_of_seats = (booking[:first_seat]..booking[:last_seat]).to_a.count
 
     seats = theatre[row].slice(first_seat, num_of_seats)
 
