@@ -14,9 +14,9 @@ RSpec.describe CinemaSystem do
     end
   end
 
-  describe '#update_theatre' do
-    it 'updates the theatre state, reserving seats' do
-      subject.update_theatre(booking_request)
+  describe '#book_seats' do
+    it 'updates the theatre state, booking seats' do
+      subject.book_seats(booking_request)
       expect(subject.theatre[1].slice(0, 3).all?('X')).to eq(true)
     end
   end

@@ -14,7 +14,7 @@ class ProcessBookingRequests
 
     booking_requests.each do |booking_request|
       if BookingValidator.valid_booking?(booking_request, cinema_system.theatre)
-        cinema_system.update_theatre(booking_request)
+        cinema_system.book_seats(booking_request)
       else
         invalid_booking_requests << booking_request
       end
